@@ -3,27 +3,27 @@
 #This is what shows up in the /lib/ folder
 
 #For example:
-#mf-react-standards/src/js/components/exports/MfContainer
-#Generates ./lib/exports/MfContainer
+#react-library-boilerplate/src/js/components/exports/Container
+#Generates ./lib/exports/Container
 #
 
-#import _MfContainer from './MfContainer';
-#export { _MfContainer as MfContainer };
+#import _Container from './Container';
+#export { _Container as Container };
 #
-#Projects using mf-react-standards as a dependency can just reference the container required
-#import { MfContainer } from 'mf-react-standards';
+#Projects using react-library-boilerplate as a dependency can just reference the container required
+#import { Container } from 'react-library-boilerplate';
 
 
 #This gets compiled by babel into ES5 in the /lib/ folder
 
-EXPORT_FILE='mf-react-standards.js'
+EXPORT_FILE='react-library-boilerplate.js'
+EXPORT_DIRECTORY="./src/js/components/exports/*/"
 
 > $EXPORT_FILE
 
-for dir in ./src/js/components/exports/*/
+for dir in $EXPORT_DIRECTORY
 do
     dir=${dir%*/}
     echo import _${dir##*/} from \'./exports/${dir##*/}\'\; >> $EXPORT_FILE
     echo export \{ _${dir##*/}\ as ${dir##*/} \}\; >> $EXPORT_FILE
 done
-
