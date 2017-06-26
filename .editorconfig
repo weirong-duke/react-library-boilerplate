@@ -1,10 +1,6 @@
 # EditorConfig helps developers define and maintain consistent
 # coding styles between different editors and IDEs
 # editorconfig.org
-#
-# Full docs at https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
-#
-# Note that this file is exactly duplicated between claire-mobile and plus-provider-mobile-ui
 
 root = true
 

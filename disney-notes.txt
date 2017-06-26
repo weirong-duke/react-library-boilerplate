@@ -1,5 +1,16 @@
-Node Version: 7.7.3
+Node Version Used: 7.7.3
+Instructions to start:
+
 
 2. started off doing css-in-js, however due to state shifting had to switch to classnames
 3. https://stackoverflow.com/questions/20926551/recommended-way-of-making-react-component-div-draggable
 https://davidwalsh.name/css-flip
+
+no redux
+
+
+future additions:
+searching for stuff
+export post it components
+
+Total time spent: 5-6 hours
