@@ -1,16 +1,50 @@
 Node Version Used: 7.7.3
 Instructions to start:
+1. yarn install / npm install
+2. npm start
+3. Navigate to localhost:8080
+
+Features:
+Required
+The ability to create and display one or more yellow sticky notes on the page
+The ability to drag and drop sticky notes anywhere on the page
+The ability to open sticky note
+The ability to close an open sticky note
+
+Extra
+The ability to delete a note
+The ability to show an example scrum board
+
+Couple of things to note:
+1. I began this exercise in earnest to create an exportable React post-it note component. I was expecting to be able to easily export this component to other
+projects, so I based it off my own boilerplate for React component libraries at https://github.com/weirong-duke/react-library-boilerplate.
+
+As I got into it, it became fairly apparent that I would not be able to finish working on my grand idea (I did not get the memo that it was a 3-day as
+opposed to a 1-week, and I was handed the exercise in ... um... what was *technically* vacation) and so I settled on a good product that has a few extra features.
+I have listed conceivable future features lower.
+
+2. I started off doing CSS-in-JS; however I began running into some limitations regarding some of the more nuanced CSS properties. Thus, I switched to using CSS
+classes.
+
+3. The logic behind dragging and dropping the post-its on the grid was not easy for me to initially get; I got a lot of value from reading
+https://stackoverflow.com/questions/20926551/recommended-way-of-making-react-component-div-draggable; I was able to wrap my head around extracting the difference
+from the coordinates of the mouse click-and-hold and the coordinates of the post it note to make the note move correctly.
+
+4. I haven't animated any CSS in any of my professional endeavors, so I had no idea how to get a flipped element. I knew about transitions and using transforms
+to display those transitions, but I hadn't known of the very simple, very basic flipping transforms until I read https://davidwalsh.name/css-flip
+
+5. Component state. I wrote all the state behavior in component state, which really made me feel dirty. That being said, I did not think I had the time
+to set up a *robust* and correctly working Redux environment (a clean file directory structure is not always intuitive; classic actions + reducers vs dux) 
+to support the data needed here.
+
+I would be happy to talk through the entire process of building this exercise. I'm happy that I finished the requirements, but a little frustrated that I
+didn't have time to really get all the extra features I wanted implemented. I hope that this project exhibits some of my qualifications, and that this writeup
+helps explain the process behind the project.
 
 
-2. started off doing css-in-js, however due to state shifting had to switch to classnames
-3. https://stackoverflow.com/questions/20926551/recommended-way-of-making-react-component-div-draggable
-https://davidwalsh.name/css-flip
+Future additions:
+Filtering post-its for specific text
+Exporting PostItNote as an actual React component that is usable in other React applications
+The ability to resize the notes
 
-no redux
-
-
-future additions:
-searching for stuff
-export post it components
-
-Total time spent: 5-6 hours
+Total time spent: ~8 hours

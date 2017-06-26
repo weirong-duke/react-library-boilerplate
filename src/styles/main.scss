@@ -10,6 +10,7 @@ button {
     cursor: pointer;
 }
 
+//CSS for swim lane table;
 .board-table {
     border-collapse: collapse;
     font-size: 50px;
@@ -28,6 +29,7 @@ button {
     color: white;
 }
 
+//Create button and input for creating notes
 .create-button {
 	background-color: green;
 	color: white;
@@ -39,6 +41,7 @@ button {
 	border-radius: 4px;
 }
 
+//Actual CSS for post it notes and their reverse sides
 .postit-note {
 	display: inline-block;
 	width: 150px;
@@ -51,11 +54,11 @@ button {
 	overflow: hidden;
 	transform: rotateX(0deg);
 	transition: all 0.5s ease-in-out;
-    /** Chrome & Safari **/
+    //Chrome + Safari
     -webkit-transition: all 0.5s ease-in-out;
-    /** Firefox **/
+    //Firefox
     -moz-transition: all 0.5s ease-in-out;
-    /** Opera **/
+    //Opera
     -o-transition: all 0.5s ease-in-out;
 
 	.postit-title {

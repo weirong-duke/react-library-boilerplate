@@ -5,6 +5,10 @@ const getPostItStyles = (x, y, isSelected, moving) => {
 		return {};
 	}
 	else {
+		//this is the an annoying part that requires explanation
+		//the flipping of the note requires a transition, but if you add time to a transition, then the *moving* of a note also shows the x-second delay
+		//for example, transition: all 0.5s ease-in-out will delay the user when they drag and drop a post it
+		//thus, we need to remove the transition specifically if the user is dragging and dropping
 		return moving
 			? {
 				left: x || 0,
@@ -33,19 +37,19 @@ export default class PostItNote extends React.PureComponent {
 		this.clickNote = this.clickNote.bind(this);
 	}
 
-	componentDidUpdate(props, state) {
-		if (this.state.moving && !state.moving) {
+	componentDidUpdate(nextProps, nextState) {
+		//this is necessary to remove janky behavior between the React component updating and
+		//the actual element shifting
+		if (this.state.moving && !nextState.moving) {
 			document.addEventListener('mousemove', this.moveNote);
 			document.addEventListener('mouseup', this.onMouseUp);
-		} else if (!this.state.moving && state.moving) {
+		} else if (!this.state.moving && nextState.moving) {
 			document.removeEventListener('mousemove', this.moveNote);
 			document.removeEventListener('mouseup', this.onMouseUp);
 		}
 	}
 
 	onMouseDown(e) {
-		// only left mouse button
-		if (e.button !== 0) return;
 		this.setState({
 			moving: true,
 			delta: {
@@ -81,8 +85,6 @@ export default class PostItNote extends React.PureComponent {
 			<div className={noteClass} style={getPostItStyles(this.state.x, this.state.y, this.props.isSelected, this.state.moving)}>
 				<span onMouseDown={this.onMouseDown} className="postit-title">Drag and drop</span>
 				<span className="postit-delete" onClick={this.props.deleteNote}>X</span>
-
-
 
 				<div onClick={this.clickNote} className="postit-content">{this.props.text}</div>
 			</div>
