@@ -1,38 +1,29 @@
 import React from 'react';
 
-const getPostItStyles = (x, y) => {
-	console.log('getting styles', {
-		left: x || 0,
-		top: y || 0,
-		width: "120px",
-		height: "120px",
-		borderRadius: "8px",
-		border: "1px solid #BEB347",
-		backgroundColor: "#ffea5b",
-		position: "relative",
-		cursor: "pointer",
-		overflow: "hidden"
-	})
-	return {
-		display: 'inline-block',
-		left: x || 0,
-		top: y || 0,
-		width: "120px",
-		height: "120px",
-		border: "1px solid #BEB347",
-		backgroundColor: "#ffea5b",
-		position: "relative",
-		cursor: "pointer",
-		overflow: "hidden"
+const getPostItStyles = (x, y, isSelected, moving) => {
+	if (isSelected) {
+		return {}
 	}
+	else {
+		return moving
+			? {
+				left: x || 0,
+				top: y || 0,
+				transition: 'none'
+			} : {
+				left: x || 0,
+				top: y || 0
+			}
+	}
+
 };
 
 export default class PostItNote extends React.PureComponent{
 	constructor(props) {
 		super(props);
 		this.state = {
-			x: 0,
-			y: 20,
+			x: this.props.initialX || 0,
+			y: this.props.initialY || 0,
 			delta: {},
 			moving: false
 		};
@@ -40,7 +31,7 @@ export default class PostItNote extends React.PureComponent{
 		this.onMouseDown = this.onMouseDown.bind(this);
 		this.onMouseUp = this.onMouseUp.bind(this);
 		this.moveNote = this.moveNote.bind(this);
-		this.flipNote = this.flipNote.bind(this);
+		this.clickNote = this.clickNote.bind(this);
 	}
 
 	componentDidUpdate(props, state) {
@@ -81,16 +72,20 @@ export default class PostItNote extends React.PureComponent{
 		e.preventDefault()
 	}
 
-	flipNote(e) {
-		console.log('clickced tho')
+	clickNote(e) {
+		this.props.clickNote();
 	}
 
 	render() {
-
+		const noteClass = this.props.isSelected ? 'postit-note note-back' : 'postit-note';
 		return (
-			<div style={getPostItStyles(this.state.x, this.state.y)}>
-				<div onMouseDown={this.onMouseDown} style={{textAlign: "center", width: "100%", height: "20px", backgroundColor: "#beb347"}}>Drag and drop</div>
-				<div onClick={this.flipNote} style={{height:"100%", width:"100%"}}>{this.props.text}</div>
+			<div className={noteClass} style={getPostItStyles(this.state.x, this.state.y, this.props.isSelected, this.state.moving)}>
+					<span onMouseDown={this.onMouseDown} className="postit-title">Drag and drop</span>
+					<span className="postit-delete" onClick={this.props.deleteNote}>X</span>
+
+
+
+				<div onClick={this.clickNote} className="postit-content">{this.props.text}</div>
 			</div>
 		)
 	}

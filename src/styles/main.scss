@@ -1,15 +1,105 @@
+body {
+    font-family: 'Just Me Again Down Here', cursive;
+}
+
+button {
+    padding: 8px 24px;
+    border: none;
+    display: block;
+    outline: none;
+    cursor: pointer;
+}
+
+.board-table {
+    border-collapse: collapse;
+    font-size: 50px;
+    width: 100%;
+    position: fixed;
+    top: 100px;
+
+    td + td,
+    th + th {
+        border-left: 5px solid;
+    }
+}
+
+.toggle-swim-button {
+    background-color:  #0099ff;
+    color: white;
+}
+
 .create-button {
-  padding: 8px 24px;
-  border: none;
-  background-color: green;
-  display: block;
-  color: white;
-  outline: none;
-  cursor: pointer;
+	background-color: green;
+	color: white;
 }
 
 .create-input {
-  height: 24px;
-  width: 125px;
-  border-radius: 4px;
+	height: 24px;
+	width: 125px;
+	border-radius: 4px;
+}
+
+.postit-note {
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+    font-size: 20px;
+	border: 1px solid #BEB347;
+	background-color: #ffea5b;
+	position: fixed;
+	cursor: pointer;
+	overflow: hidden;
+	transform: rotateX(0deg);
+	transition: all 0.5s ease-in-out;
+    /** Chrome & Safari **/
+    -webkit-transition: all 0.5s ease-in-out;
+    /** Firefox **/
+    -moz-transition: all 0.5s ease-in-out;
+    /** Opera **/
+    -o-transition: all 0.5s ease-in-out;
+
+	.postit-title {
+        backface-visibility: hidden;
+		text-align:center;
+        width:80%;
+        display: inline-block;
+        height:30px;
+        background-color: #beb347;
+	}
+
+    .postit-delete {
+        width: 20%;
+        height:30px;
+        display: inline-block;
+        background-color: red;
+        text-align: center;
+    }
+
+	.postit-content {
+        height: 100%;
+        width: 100%;
+    }
+
+	&.note-back {
+		transform: rotateX(-180deg);
+		background-color: #0099ff;
+        border: none;
+        line-height: 3em;
+        text-align: center;
+		position: fixed;
+		left: calc(50% - 40px);
+		top: calc(50% - 40px);
+
+		.postit-title {
+    		display: none;
+		}
+
+        .postit-delete {
+            display:none;
+        }
+
+		.postit-content {
+			transform: rotateX(180deg);
+		}
+	}
 }

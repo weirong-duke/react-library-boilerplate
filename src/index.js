@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NoteBoard from './NoteBoard';
+import NoteBoard from './components/NoteBoard';
 import './styles/main.scss';
 
 class Main extends React.Component {
