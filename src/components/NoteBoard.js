@@ -29,24 +29,22 @@ export default class NoteBoard extends React.PureComponent {
 	addNote() {
 		const tempNewNotes = this.state.notes.slice(0);
 		tempNewNotes.push({text: this.state.createText});
-		this.setState({notes: tempNewNotes})
+		this.setState({notes: tempNewNotes});
 	}
 
 	alterInputText(e) {
-		console.log('yup altering', e.target.value);
-		this.setState({createText: e.target.value})
+		this.setState({createText: e.target.value});
 	}
 	submitCreateNote(e) {
 		e.preventDefault();
 	}
 
 	selectNote(noteIndex) {
-		console.log('hallo')
 		if (this.state.selectedNote === noteIndex) {
-			this.setState({selectedNote: null})
+			this.setState({selectedNote: null});
 		}
 		else {
-			this.setState({selectedNote: noteIndex})
+			this.setState({selectedNote: noteIndex});
 		}
 	}
 
@@ -55,21 +53,21 @@ export default class NoteBoard extends React.PureComponent {
 		tempNotes.splice(noteIndex, 1);
 		this.setState({
 			notes: tempNotes
-		})
+		});
 	}
 
 	toggleSwimLane(e) {
 		e.preventDefault();
 		this.setState({
 			showSwimLanes: !this.state.showSwimLanes
-		})
+		});
 	}
 
 	render() {
 		return (
 			<div>
 				<form onSubmit={this.submitCreateNote}>
-					<input className="create-input" onChange={this.alterInputText}/>
+					<input className="create-input" onChange={this.alterInputText} />
 
 					<button className="create-button" onClick={this.addNote}>Add note</button>
 					<button className="toggle-swim-button" onClick={this.toggleSwimLane}>Toggle swim lane display</button>
@@ -87,10 +85,10 @@ export default class NoteBoard extends React.PureComponent {
 							clickNote={() => this.selectNote(noteIndex)}
 							isSelected={noteIndex === this.state.selectedNote}
 							key={noteIndex}
-							text={note.text}/>
+							text={note.text} />;
 					})
 				}
 			</div>
-		)
+		);
 	}
 }

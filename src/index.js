@@ -8,8 +8,8 @@ const Main = () => {
 		<div>
 			<NoteBoard />
 		</div>
-	)
-}
+	);
+};
 
 ReactDOM.render(<Main />, document.getElementById('app'));
 
